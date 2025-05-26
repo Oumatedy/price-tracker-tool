@@ -104,8 +104,9 @@ https://pricetrackertool.netlify.app/
 ├── vite.config.js
 └── package.json
 
-
-## 🌐 API
+---
+```
+## 🌐 API 
 
 ### 📦 Source: [FakeStore API](https://fakestoreapi.com/)
 
@@ -122,6 +123,8 @@ Each product contains:
 * `rating: { rate, count }`
 
 ---
+```
+```
 
 ## 🛠️ Utilities
 
@@ -130,7 +133,7 @@ Each product contains:
 * **Responsive design** for desktop, tablet, and mobile screens
 
 ---
-
+```
 ## 📸 Screenshots
 
 | Filter & Search                                               | Product Cards                                                     | No Results                                                        |
@@ -138,36 +141,37 @@ Each product contains:
 | ![Filter](./src/assets/screenshot.png)                           | ![Product](./src/assets/screenshot.png)                             | ![No Result](./src/assets/screenshot.png)                        |
 
 ---
-
+```
 ## 🔧 Future Improvements
 
 * Add pagination or infinite scroll
 * Add cart functionality
 * Product detail modal or page
 * Store filters in URL query params
-
+```
 ---
-
+```
 ## Customization
 
 - To demo price trends, the app uses a simple function based on product ID. Replace with real price history for production.
 - You can further enhance with audio cues, error handling, and charts.
-
-
+```
+```
 ## 📄 License
 
 MIT License. Free to use and modify.
-
+```
 ---
-
+```
 ## 🙌 Acknowledgements
 
 * [FakeStore API](https://fakestoreapi.com/) for mock e-commerce data
 * [Lucide Icons](https://lucide.dev)
 * [Tailwind CSS](https://tailwindcss.com)
 * [Vite](https://vitejs.dev)
-
+```
 ---
-
+```
 ## Developer
 This application has been developed by Tedy Ouma
+```
