@@ -1,17 +1,39 @@
-# 🛍️ Product Catalog Filter App
+# ShopHub Price Tracker Tool
 
-A modern product listing and filtering interface built using **React (Vite)**, styled with **Tailwind CSS**, and powered by data from the public **[FakeStore API](https://fakestoreapi.com/products)**.
+A human-centered, joy-driven web app for retail shopkeepers to compare and track supplier prices, powered by AI and low-code tools. This app is a modern product listing and filtering interface built using **React (Vite)**, styled with **Tailwind CSS**, and powered by data from the public **[FakeStore API](https://fakestoreapi.com/products)**.
 
-## 🔍 Features
 
-* 🔎 Full-text search on product title and description
-* 🏷️ Category filter with dynamic category list
-* 💰 Price range slider dynamically set from product data
-* ⭐ Minimum rating filter
-* 📊 Sort options: by Name, Price, Rating, and Review Count (ascending/descending)
-* 🔄 Reset filters and see full product catalog again
-* 💡 Responsive grid layout with image fallback for broken URLs
-* 🌙 Beautiful UI powered by Tailwind CSS
+---
+
+🔍 Features
+🔎 Full-Text Search on product title and description
+
+🏷️ Category Filter with dynamic category list
+
+💰 Price Range Slider dynamically set from product data
+
+⭐ Minimum Rating Filter
+
+📊 Sort Options: by Name, Price, Rating, and Review Count (ascending/descending)
+
+🔄 Reset Filters to view the full product catalog again
+
+📈 Price Trend Indicators: Show if a product's price is rising, falling, or stable (demo logic)
+
+🤖 AI Insights: Smart summaries about price trends, trending products, and supplier suggestions
+
+📦 Product Catalog: Browse, search, and filter products by category, price, and rating
+
+🔥 Trending Filters: Instantly view top-rated, most-reviewed, or best-priced products
+
+💡 Responsive Grid Layout with image fallback for broken URLs
+
+✨ Modern UI/UX: Clean, responsive design with smooth animations and hover effects
+
+⚡ Rapid Prototyping: Built with React and Tailwind CSS for fast development
+
+🌙 Beautiful Interface powered by Tailwind CSS
+
 
 ---
 ## Live demo 
@@ -19,29 +41,39 @@ A modern product listing and filtering interface built using **React (Vite)**, s
 https://pricetrackertool.netlify.app/
 
 
-## 🚀 Getting Started
+## Demo
 
-### 1. **Clone the repository**
+![ShopHub Demo](./src/assets/demo.png)
 
-```bash
-git clone https://github.com/Oumatedy/price-tracker-tool.git
-cd price-tracker-tool
-```
+## Getting Started
 
-### 2. **Install dependencies**
+1. **Clone the repo:**
+   ```
+   git clone https://github.com/Oumatedy/price-tracker-tool.git
+   cd price-tracker-tool
+   ```
 
-```bash
-npm install
-```
+2. **Install dependencies:**
+   ```
+   npm install
+   ```
 
-### 3. **Start the development server**
+3. **Set up environment variables:**
+   - Create a `.env` file in the root directory.
+   - Add your OpenAI API key:
+     ```
+     VITE_OPENAI_API_KEY=your_openai_key_here
+     ```
 
-```bash
-npm run dev
-```
+4. **Run the app:**
+   ```
+   npm run dev
+   ```
+
+5. **Open in browser:**
+   - Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
 
 This will start your Vite-powered development server and open the app in your browser at [http://localhost:5173](http://localhost:5173) by default.
-
 ---
 
 ## 🧠 Tech Stack
@@ -73,9 +105,7 @@ This will start your Vite-powered development server and open the app in your br
 ├── postcss.config.js
 ├── vite.config.js
 └── package.json
-```
 
----
 
 ## 🌐 API
 
@@ -109,7 +139,6 @@ Each product contains:
 | ------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | ![Filter](./src/assets/screenshot.png)                           | ![Product](./src/assets/screenshot.png)                             | ![No Result](./src/assets/screenshot.png)                        |
 
-
 ---
 
 ## 🔧 Future Improvements
@@ -120,6 +149,12 @@ Each product contains:
 * Store filters in URL query params
 
 ---
+
+## Customization
+
+- To demo price trends, the app uses a simple function based on product ID. Replace with real price history for production.
+- You can further enhance with audio cues, error handling, and charts.
+
 
 ## 📄 License
 

@@ -42,3 +42,40 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Animations for fade-in and fade-in-up/down */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes fade-in-down {
+  0% { opacity: 0; transform: translateY(-40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes fade-in {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
+.animate-fade-in-up { animation: fade-in-up 0.7s cubic-bezier(.4,0,.2,1) both; }
+.animate-fade-in-down { animation: fade-in-down 0.7s cubic-bezier(.4,0,.2,1) both; }
+.animate-fade-in { animation: fade-in 1s cubic-bezier(.4,0,.2,1) both; }
+
+/* Card/Product hover effects */
+.product-card,
+.card,
+.group {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.product-card:hover,
+.card:hover,
+.group:hover {
+  box-shadow: 0 8px 32px 0 rgba(60, 72, 100, 0.18), 0 1.5px 6px 0 rgba(60, 72, 100, 0.10);
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* Optional: smooth image zoom on hover inside product cards */
+.group:hover img,
+.product-card:hover img {
+  transform: scale(1.08);
+  transition: transform 0.3s;
+}
