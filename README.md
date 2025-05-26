@@ -71,9 +71,7 @@ https://pricetrackertool.netlify.app/
    ```
 
 5. **Open in browser:**
-   - Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
-
-This will start your Vite-powered development server and open the app in your browser at [http://localhost:5173](http://localhost:5173) by default.
+   - Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal). This will start your Vite-powered development server and open the app in your browser at [http://localhost:5173](http://localhost:5173) by default.
 ---
 
 ## 🧠 Tech Stack
