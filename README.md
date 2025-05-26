@@ -103,7 +103,7 @@ Each product contains:
 
 | Filter & Search                                               | Product Cards                                                     | No Results                                                        |
 | ------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| ![Filter](./screenshots/filter.png)                           | ![Product](./screenshots/product.png)                             | ![No Result](./screenshots/no-results.png)                        |
+| ![Filter](./src/assets/screenshot.png)                           | ![Product](./src/assets/screenshot.png)                             | ![No Result](./src/assets/screenshot.png)                        |
 
 
 ---
