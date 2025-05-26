@@ -1,31 +1,34 @@
-# ShopHub Price Tracker Tool
 
-A human-centered, joy-driven web app for retail shopkeepers to compare and track supplier prices, powered by AI and low-code tools.  
-This app is a modern product listing and filtering interface built using **React (Vite)**, styled with **Tailwind CSS**, and powered by data from the public **[FakeStore API](https://fakestoreapi.com/products)**.
+---
+
+# 🛒 ShopHub Price Tracker Tool
+
+A human-centered, joy-driven web app for retail shopkeepers to **compare and track supplier prices**, powered by **AI** and **low-code tools**.
+Built with **React (Vite)**, styled using **Tailwind CSS**, and powered by the public **[FakeStore API](https://fakestoreapi.com/products)**.
 
 ---
 
 ## 🚀 Features
 
-- 🔎 **Full-Text Search** on product title and description
-- 🏷️ **Category Filter** with dynamic category list
-- 💰 **Price Range Slider** dynamically set from product data
-- ⭐ **Minimum Rating Filter**
-- 📊 **Sort Options:** by Name, Price, Rating, and Review Count (ascending/descending)
-- 🔄 **Reset Filters** to view the full product catalog again
-- 📈 **Price Trend Indicators:** Show if a product's price is rising, falling, or stable (demo logic)
-- 🤖 **AI Insights:** Smart summaries about price trends, trending products, and supplier suggestions
-- 📦 **Product Catalog:** Browse, search, and filter products by category, price, and rating
-- 🔥 **Trending Filters:** Instantly view top-rated, most-reviewed, or best-priced products
-- 💡 **Responsive Grid Layout** with image fallback for broken URLs
-- ✨ **Modern UI/UX:** Clean, responsive design with smooth animations and hover effects
-- ⚡ **Rapid Prototyping:** Built with React and Tailwind CSS for fast development
+* 🔎 **Full-Text Search** on product titles and descriptions
+* 🏷️ **Dynamic Category Filters** for precise browsing
+* 💰 **Auto-Ranged Price Slider** powered by live product data
+* ⭐ **Minimum Rating Filter** to surface best-reviewed products
+* 📊 **Multi-Sort Options**: Name, Price, Rating, and Review Count (asc/desc)
+* 🔄 **Reset Filters** to quickly return to full catalog view
+* 📈 **Price Trend Indicators** (demo logic based on product ID)
+* 🤖 **AI Insights**: Summaries for price trends, top products & supplier suggestions
+* 🔥 **Trending Filters**: Top-rated, most-reviewed, and lowest-priced product views
+* 📦 **Interactive Product Catalog** with fast filtering and browsing
+* 💡 **Responsive Grid UI** with fallback for broken image URLs
+* ✨ **Modern UI/UX** with animations and hover effects
+* ⚡ **Rapid Prototyping Ready**: Built using Vite + React + Tailwind
 
 ---
 
 ## 🌐 Live Demo
 
-[https://pricetrackertool.netlify.app/](https://pricetrackertool.netlify.app/)
+🔗 [Try the App on Netlify](https://pricetrackertool.netlify.app/)
 
 ---
 
@@ -37,43 +40,48 @@ This app is a modern product listing and filtering interface built using **React
 
 ## 🛠️ Getting Started
 
-1. **Clone the repo:**
-   ```
-   git clone https://github.com/Oumatedy/price-tracker-tool.git
-   cd price-tracker-tool
-   ```
+### 1. Clone the repository
 
-2. **Install dependencies:**
-   ```
-   npm install
-   ```
+```bash
+git clone https://github.com/Oumatedy/price-tracker-tool.git
+cd price-tracker-tool
+```
 
-3. **Set up environment variables:**
-   - Create a `.env` file in the root directory.
-   - Add your OpenAI API key:
-     ```
-     VITE_OPENAI_API_KEY=your_openai_key_here
-     ```
+### 2. Install dependencies
 
-4. **Run the app:**
-   ```
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-5. **Open in browser:**
-   - Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_OPENAI_API_KEY=your_openai_key_here
+```
+
+### 4. Run the development server
+
+```bash
+npm run dev
+```
+
+### 5. Open in browser
+
+Navigate to: [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 🧠 Tech Stack
 
-| Tech              | Usage                                      |
-| ----------------- | ------------------------------------------ |
-| **React**         | Front-end JavaScript library               |
-| **Vite**          | Build tool and development server          |
-| **Tailwind**      | Utility-first CSS framework for styling    |
-| **Lucide**        | Icon library for React (used for UI icons) |
-| **FakeStore API** | Public API for mock product data           |
+| Tech              | Purpose                                  |
+| ----------------- | ---------------------------------------- |
+| **React**         | UI development                           |
+| **Vite**          | Lightweight bundler & dev server         |
+| **Tailwind CSS**  | Utility-first styling                    |
+| **Lucide Icons**  | Icon components for clean UI             |
+| **FakeStore API** | Mock product data (titles, prices, etc.) |
 
 ---
 
@@ -83,88 +91,91 @@ This app is a modern product listing and filtering interface built using **React
 .
 ├── src/
 │   ├── components/
-│   │   └── Prices.jsx     # Main UI and filtering logic
+│   │   └── Prices.jsx         # Main filtering & UI logic
 │   ├── utils/
-│   │   └── data.js        # Fetches product data from FakeStore API
+│   │   └── data.js            # Data fetching from FakeStore API
+│   ├── assets/
+│   │   └── demo.png           # Screenshot for demo
 │   ├── App.jsx
 │   ├── main.jsx
-│   ├── assets/
-│   │   └── demo.png       # Demo screenshot
 ├── public/
 ├── index.html
+├── vite.config.js
 ├── tailwind.config.js
 ├── postcss.config.js
-├── vite.config.js
 └── package.json
 ```
 
 ---
 
-## 🌐 API
+## 📡 API Usage
 
-**Source:** [FakeStore API](https://fakestoreapi.com/)
-
-All product data is fetched from:
+**Endpoint:**
 
 ```
 https://fakestoreapi.com/products
 ```
 
-Each product contains:
+**Each product object includes:**
 
-- `id`, `title`, `description`, `price`, `category`
-- `image`
-- `rating: { rate, count }`
+* `id`, `title`, `description`, `price`, `category`
+* `image`
+* `rating: { rate, count }`
 
 ---
 
-## 🛠️ Utilities
+## 🧰 Utilities & Enhancements
 
-- **Image fallback** if a product image fails to load
-- **Memoized filters** using `useMemo` for performance
-- **Responsive design** for desktop, tablet, and mobile screens
+* ✅ **Image Fallbacks** for missing/broken product images
+* ⚙️ **Memoized Filters** using `useMemo` for performance
+* 📱 **Mobile-Responsive** design: optimized for all screen sizes
 
 ---
 
 ## 📸 Screenshots
 
-| Filter & Search                  | Product Cards                  | No Results                    |
-| -------------------------------- | ------------------------------ | ----------------------------- |
+| Filter & Search                  | Product Cards                     | No Results                          |
+| -------------------------------- | --------------------------------- | ----------------------------------- |
 | ![Filter](./src/assets/demo.png) | ![Product](./src/assets/demo.png) | ![No Result](./src/assets/demo.png) |
 
 ---
 
-## 🔧 Future Improvements
+## 🚧 Future Improvements
 
-- Add pagination or infinite scroll
-- Add cart functionality
-- Product detail modal or page
-- Store filters in URL query params
-
----
-
-## 🛠️ Customization
-
-- To demo price trends, the app uses a simple function based on product ID. Replace with real price history for production.
-- You can further enhance with audio cues, error handling, and charts.
+* 📄 Add product detail modal or page
+* ➕ Add cart & wishlist functionality
+* 🔁 Pagination or infinite scrolling
+* 🔗 Store filters in URL query parameters
 
 ---
 
-## 📄 License
+## ⚙️ Customization Tips
 
-MIT License. Free to use and modify.
+* 💡 Price trends are currently simulated via a function based on product ID — easily replaceable with real price history logic.
+* 🎨 Enhance further with error boundaries, loading skeletons, and data visualizations.
+* 🔊 Optional: Add audio feedback for filter actions for improved UX.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** — free to use, customize, and distribute.
 
 ---
 
 ## 🙌 Acknowledgements
 
-- [FakeStore API](https://fakestoreapi.com/) for mock e-commerce data
-- [Lucide Icons](https://lucide.dev)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Vite](https://vitejs.dev)
+* [FakeStore API](https://fakestoreapi.com/) – E-commerce mock data
+* [Lucide Icons](https://lucide.dev) – Beautiful open-source icons
+* [Tailwind CSS](https://tailwindcss.com) – Rapid UI development
+* [Vite](https://vitejs.dev) – Fast frontend tooling
 
 ---
 
 ## 👤 Developer
 
-This application has been developed by Tedy Ouma
+Built with ❤️ by **Tedy Ouma**
+🔗 [GitHub Profile](https://github.com/Oumatedy)
+
+---
+
