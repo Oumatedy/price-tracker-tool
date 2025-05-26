@@ -14,6 +14,10 @@ A modern product listing and filtering interface built using **React (Vite)**, s
 * 🌙 Beautiful UI powered by Tailwind CSS
 
 ---
+## Live demo 
+
+https://pricetrackertool.netlify.app/
+
 
 ## 🚀 Getting Started
 
