@@ -1,25 +1,44 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/Home';
 import Prices from './components/Prices';
+import ContactCard from './components/ContactCard';
+import { useState } from 'react'
+import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const catalogRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Handler to scroll to catalog or navigate to /catalog
+  const handleBrowse = () => {
+    navigate('/catalog');
+  };
 
   return (
-   <Router>
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow pt-24">
-          <Routes>
-            <Route path="/" element={<Prices />} />
-          </Routes>
-        </main>
-      </div>
-    </Router>
-  )
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home onBrowse={handleBrowse} />} />
+          <Route path="/catalog" element={<Prices />} />
+          <Route path="/contact" element={<ContactCard />} />
+          {/* Add more routes here if needed */}
+        </Routes>
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+// Wrap App in Router for export
+export default function AppWithRouter() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}

@@ -14,6 +14,9 @@ const Prices = () => {
   const [aiInsights, setAIInsights] = useState('');
   const [loadingAI, setLoadingAI] = useState(false);
   const [trending, setTrending] = useState('none');
+  const [error, setError] = useState('');
+  const [aiError, setAIError] = useState('');
+  const aiSoundRef = useRef(null);
   const catalogRef = useRef(null);
 
   useEffect(() => {
@@ -21,8 +24,13 @@ const Prices = () => {
   }, []);
 
   const fetchData = async () => {
-    const response = await getData();
-    setData(response);
+    setError('');
+    try {
+      const response = await getData();
+      setData(response);
+    } catch (e) {
+      setError('Failed to load products. Please try again later.');
+    }
   };
 
   // Get unique categories from data
@@ -137,69 +145,12 @@ const Prices = () => {
 
   return (
     <div className="bg-[#f7fafd] min-h-screen">
-      {/* Welcome Section */}
-      <div className="max-w-4xl mx-auto text-center pt-16 pb-8">
-        <h1 className="text-5xl font-extrabold text-blue-900 mb-4 animate-fade-in-down">
-          Welcome to ShopHub
-        </h1>
-        <p className="text-lg text-gray-600 mb-8 animate-fade-in">
-          Discover amazing products from our curated collection. Browse through categories,<br />
-          compare prices, and find exactly what you're looking for.
-        </p>
-        <button
-          className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-200 animate-fade-in-up"
-          onClick={() => catalogRef.current?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Browse Products &rarr;
-        </button>
-      </div>
-
-      {/* Features Section */}
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 px-4">
-        <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-all duration-200 animate-fade-in-up">
-          <div className="bg-blue-100 p-4 rounded-full mb-4">
-            <Star className="w-8 h-8 text-blue-600" />
-          </div>
-          <h3 className="font-bold text-lg mb-2">Quality Products</h3>
-          <p className="text-gray-500 text-center">
-            Carefully curated selection of high-quality products with verified ratings and reviews.
-          </p>
+      {/* Error Message for Data Fetch */}
+      {error && (
+        <div className="max-w-xl mx-auto mb-4 p-4 bg-red-100 text-red-700 rounded shadow text-center font-semibold">
+          {error}
         </div>
-        <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-all duration-200 animate-fade-in-up delay-100">
-          <div className="bg-green-100 p-4 rounded-full mb-4">
-            <DollarSign className="w-8 h-8 text-green-600" />
-          </div>
-          <h3 className="font-bold text-lg mb-2">Best Prices</h3>
-          <p className="text-gray-500 text-center">
-            Competitive pricing across all categories with transparent pricing and no hidden fees.
-          </p>
-        </div>
-        <div className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center hover:scale-105 hover:shadow-xl transition-all duration-200 animate-fade-in-up delay-200">
-          <div className="bg-gradient-to-tr from-pink-400 to-purple-500 p-4 rounded-full mb-4">
-            <Search className="w-8 h-8 text-white" />
-          </div>
-          <h3 className="font-bold text-lg mb-2">Easy Search</h3>
-          <p className="text-gray-500 text-center">
-            Advanced filtering and search capabilities to help you find exactly what you need.
-          </p>
-        </div>
-      </div>
-
-      {/* Call to Action Section */}
-      <div className="max-w-5xl mx-auto mb-12 px-4">
-        <div className="bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl py-12 px-8 text-center text-white shadow-lg animate-fade-in-up">
-          <h2 className="text-3xl font-bold mb-4">Ready to Start Shopping?</h2>
-          <p className="mb-6 text-lg">
-            Join thousands of satisfied customers who have found their perfect products with us.
-          </p>
-          <button
-            className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-100 hover:scale-105 transition-all duration-200"
-            onClick={() => catalogRef.current?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Explore Catalog &rarr;
-          </button>
-        </div>
-      </div>
+      )}
 
       {/* Product Catalog Section */}
       <div ref={catalogRef} className="max-w-7xl mx-auto p-6">
@@ -213,38 +164,38 @@ const Prices = () => {
           <button
             className={`px-4 py-2 rounded-lg font-semibold border transition-colors ${
               trending === 'top-rated'
-                ? 'bg-yellow-400 text-white border-yellow-400'
-                : 'bg-white text-yellow-700 border-yellow-400 hover:bg-yellow-50'
+                ? 'bg-orange-500 text-white border-orange-500 shadow'
+                : 'bg-white text-orange-700 border-orange-300 hover:bg-orange-50 border-orange-300'
             }`}
             onClick={() => handleTrending('top-rated')}
           >
-            🔥 Top Rated
+            <span role="img" aria-label="Top Rated">🔥</span> Top Rated
           </button>
           <button
             className={`px-4 py-2 rounded-lg font-semibold border transition-colors ${
               trending === 'most-reviewed'
-                ? 'bg-blue-500 text-white border-blue-500'
-                : 'bg-white text-blue-700 border-blue-500 hover:bg-blue-50'
+                ? 'bg-blue-600 text-white border-blue-600 shadow'
+                : 'bg-white text-blue-700 border-blue-300 hover:bg-blue-50 border-blue-300'
             }`}
             onClick={() => handleTrending('most-reviewed')}
           >
-            💬 Most Reviewed
+            <span role="img" aria-label="Most Reviewed">💬</span> Most Reviewed
           </button>
           <button
             className={`px-4 py-2 rounded-lg font-semibold border transition-colors ${
               trending === 'best-price'
-                ? 'bg-green-500 text-white border-green-500'
-                : 'bg-white text-green-700 border-green-500 hover:bg-green-50'
+                ? 'bg-green-600 text-white border-green-600 shadow'
+                : 'bg-white text-green-700 border-green-300 hover:bg-green-50 border-green-300'
             }`}
             onClick={() => handleTrending('best-price')}
           >
-            💸 Best Price
+            <span role="img" aria-label="Best Price">💸</span> Best Price
           </button>
           <button
             className={`px-4 py-2 rounded-lg font-semibold border transition-colors ${
               trending === 'none'
-                ? 'bg-gray-300 text-gray-700 border-gray-300'
-                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                ? 'bg-gray-200 text-gray-700 border-gray-200 shadow'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100 border-gray-300'
             }`}
             onClick={() => handleTrending('none')}
           >
@@ -440,9 +391,19 @@ const Prices = () => {
         <div className="mb-6 flex items-center gap-4">
           <button
             onClick={async () => {
+              setAIError('');
               setLoadingAI(true);
-              const insights = await getAIInsights(filteredAndSortedData);
-              setAIInsights(insights);
+              try {
+                const insights = await getAIInsights(filteredAndSortedData);
+                setAIInsights(insights);
+                // Play audio cue when AI insights are ready
+                if (aiSoundRef.current) {
+                  aiSoundRef.current.currentTime = 0;
+                  aiSoundRef.current.play();
+                }
+              } catch (e) {
+                setAIError('Failed to get AI insights. Please try again.');
+              }
               setLoadingAI(false);
             }}
             className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
@@ -450,6 +411,11 @@ const Prices = () => {
           >
             {loadingAI ? "Analyzing..." : "Get AI Insights"}
           </button>
+          {/* Audio cue for AI Insights */}
+          <audio ref={aiSoundRef} src="/notification.mp3" preload="auto" />
+          {aiError && (
+            <div className="text-red-600 font-semibold">{aiError}</div>
+          )}
           {aiInsights && (
             <div className="bg-white p-4 rounded shadow max-w-xl">
               <h2 className="font-bold mb-2">AI Insights</h2>
@@ -463,26 +429,3 @@ const Prices = () => {
 };
 
 export default Prices;
-
-/* Add the following to your global CSS (e.g., index.css or App.css):
-
-@keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(40px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-@keyframes fade-in-down {
-  0% { opacity: 0; transform: translateY(-40px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-@keyframes fade-in {
-  0% { opacity: 0;}
-  100% { opacity: 1;}
-}
-.animate-fade-in-up { animation: fade-in-up 0.7s cubic-bezier(.4,0,.2,1) both; }
-.animate-fade-in-down { animation: fade-in-down 0.7s cubic-bezier(.4,0,.2,1) both; }
-.animate-fade-in { animation: fade-in 1s cubic-bezier(.4,0,.2,1) both; }
-
-// --- Optional: For full judging criteria, consider adding below ---
-// 1. Audio cues: Use a package like use-sound or HTML5 Audio for button clicks or AI insights ready.
-// 2. Error handling: Show a user-friendly message if getData or getAIInsights fails.
-*/
