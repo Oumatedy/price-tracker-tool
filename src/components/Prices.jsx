@@ -250,22 +250,14 @@ const Prices = () => {
           </div>
         </div>
       )}
-      {/* Remove the Home Page Create Account Button here */}
-      {/* <div className="w-full flex justify-center pt-8 pb-2">
-        <button
-          className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow hover:bg-orange-600 transition-colors text-lg"
-          onClick={() => navigate('/registration')}
-        >
-          Create Retailer Account
-        </button>
-      </div> */}
+      
       {/* ...existing code... */}
       <div ref={catalogRef} className="max-w-7xl mx-auto p-6">
         {/* Retailer Account Button (catalogue section) */}
         <div className="flex justify-end mb-4">
           <button
             className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold shadow hover:bg-orange-600 transition-colors"
-            onClick={() => window.open('/registration', '_blank', 'noopener')}
+            onClick={() => navigate('/registration')}
           >
             Create Retailer Account
           </button>
