@@ -59,7 +59,7 @@ function RetailerAccountModal({
   ) : null;
 }
 
-const Home = ({ onBrowse }) => {
+const Home = () => {
   const [showRetailerModal, setShowRetailerModal] = useState(false);
   const [retailerForm, setRetailerForm] = useState({
     name: '',
@@ -118,7 +118,7 @@ const Home = ({ onBrowse }) => {
         </p>
         <button
           className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:bg-blue-700 transition-all duration-200 animate-fade-in-up"
-          onClick={onBrowse}
+          onClick={() => navigate('/catalog')}
         >
           Browse Products &rarr;
         </button>
@@ -164,7 +164,7 @@ const Home = ({ onBrowse }) => {
           </p>
           <button
             className="bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow hover:bg-blue-100 hover:scale-105 transition-all duration-200"
-            onClick={onBrowse}
+            onClick={() => navigate('/catalog')}
           >
             Explore Catalog &rarr;
           </button>
@@ -175,7 +175,7 @@ const Home = ({ onBrowse }) => {
       <div className="w-full flex justify-center pt-8 pb-2">
         <button
           className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow hover:bg-orange-600 transition-colors text-lg"
-          onClick={() => window.open('/registration', '_blank', 'noopener')}
+          onClick={() => navigate('/registration')}
         >
           Create Retailer Account
         </button>

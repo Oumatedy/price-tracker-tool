@@ -10,21 +10,22 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const catalogRef = useRef(null);
-  const navigate = useNavigate();
+  // const [count, setCount] = useState(0)
+  // const catalogRef = useRef(null);
+  // const navigate = useNavigate();
 
-  // Handler to scroll to catalog or navigate to /catalog
-  const handleBrowse = () => {
-    navigate('/catalog');
-  };
+  // // Handler to scroll to catalog or navigate to /catalog
+  // const handleBrowse = () => {
+  //   navigate('/catalog');
+  // };
 
   return (
+    <Router>
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home onBrowse={handleBrowse} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Prices />} />
           <Route path="/contact" element={<ContactCard />} />
           <Route path="/registration" element={<Registration />} />
@@ -34,14 +35,17 @@ function App() {
       </main>
       <Footer />
     </div>
+  </Router>
   );
 }
 
-// Wrap App in Router for export
-export default function AppWithRouter() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  );
-}
+export default App; 
+
+// // Wrap App in Router for export
+// export default function AppWithRouter() {
+//   return (
+//     <Router>
+//       <App />
+//     </Router>
+//   );
+// }

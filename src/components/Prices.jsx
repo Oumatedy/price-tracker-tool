@@ -3,6 +3,7 @@ import { Search, Filter, Star, DollarSign } from 'lucide-react';
 import { getData } from '../utils/data';
 import { getAIInsights } from '../utils/ai';
 import { useNavigate } from 'react-router-dom';
+import Registration from './Registration';
 
 const Prices = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -253,7 +254,7 @@ const Prices = () => {
       {/* <div className="w-full flex justify-center pt-8 pb-2">
         <button
           className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow hover:bg-orange-600 transition-colors text-lg"
-          onClick={() => window.open('/registration', '_blank', 'noopener')}
+          onClick={() => navigate('/registration')}
         >
           Create Retailer Account
         </button>
