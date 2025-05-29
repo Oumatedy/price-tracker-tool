@@ -89,6 +89,19 @@ const Prices = () => {
   const [retailerSuccess, setRetailerSuccess] = useState('');
   const aiSoundRef = useRef(null);
   const catalogRef = useRef(null);
+  const [selectedSeller, setSelectedSeller] = useState('all');
+
+  // Add random sellers for demo
+  const sellerNames = [
+    'Acme Corp', 'BestMart', 'QuickShop', 'SuperDeals', 'MegaStore', 'ShopEase', 'ValueHub', 'PrimeGoods'
+  ];
+
+  function assignRandomSellers(products) {
+    return products.map((item, idx) => ({
+      ...item,
+      seller: item.seller || sellerNames[idx % sellerNames.length]
+    }));
+  }
 
   useEffect(() => {
     fetchData();
@@ -97,7 +110,9 @@ const Prices = () => {
   const fetchData = async () => {
     setError('');
     try {
-      const response = await getData();
+      let response = await getData();
+      // Assign random sellers for demo
+      response = assignRandomSellers(response);
       setData(response);
     } catch (e) {
       setError('Failed to load products. Please try again later.');
@@ -108,6 +123,12 @@ const Prices = () => {
   const categories = useMemo(() => {
     const cats = [...new Set(data.map(item => item.category))];
     return cats.sort();
+  }, [data]);
+
+  // Get unique sellers from data
+  const sellers = useMemo(() => {
+    const sellerList = [...new Set(data.map(item => item.seller || 'Unknown Seller'))];
+    return sellerList.sort();
   }, [data]);
 
   // Get price range from data
@@ -126,10 +147,11 @@ const Prices = () => {
       const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            item.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+      const matchesSeller = selectedSeller === 'all' || (item.seller || 'Unknown Seller') === selectedSeller;
       const matchesPrice = item.price >= priceRange.min && item.price <= priceRange.max;
       const matchesRating = item.rating.rate >= minRating;
       
-      return matchesSearch && matchesCategory && matchesPrice && matchesRating;
+      return matchesSearch && matchesCategory && matchesSeller && matchesPrice && matchesRating;
     });
 
     // Sort the filtered data
@@ -165,7 +187,7 @@ const Prices = () => {
     });
 
     return filtered;
-  }, [data, searchTerm, selectedCategory, priceRange, minRating, sortBy, sortOrder]);
+  }, [data, searchTerm, selectedCategory, selectedSeller, priceRange, minRating, sortBy, sortOrder]);
 
   // Trending filter logic
   const handleTrending = (type) => {
@@ -202,6 +224,7 @@ const Prices = () => {
     setSortBy('name');
     setSortOrder('asc');
     setTrending('none');
+    setSelectedSeller('all');
   };
 
   // Helper to get demo price trend info
@@ -362,6 +385,20 @@ const Prices = () => {
               ))}
             </select>
 
+            {/* Seller Filter */}
+            <select
+              value={selectedSeller}
+              onChange={e => setSelectedSeller(e.target.value)}
+              className="text-gray-950 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="all">All Sellers</option>
+              {sellers.map(seller => (
+                <option key={seller} value={seller}>
+                  {seller}
+                </option>
+              ))}
+            </select>
+
             {/* Sort */}
             <select
               value={`${sortBy}-${sortOrder}`}
@@ -495,6 +532,10 @@ const Prices = () => {
                       <span>{product.rating.rate}</span>
                       <span className="ml-1">({product.rating.count})</span>
                     </div>
+                  </div>
+                  {/* Seller Info */}
+                  <div className="text-xs text-gray-500 mt-1">
+                    Seller: {product.seller || 'Unknown Seller'}
                   </div>
                 </div>
               </div>
