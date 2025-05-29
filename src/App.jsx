@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Prices from './components/Prices';
 import ContactCard from './components/ContactCard';
+import Registration from './components/Registration';
 import { useState } from 'react'
 import './App.css'
 
@@ -26,6 +27,8 @@ function App() {
           <Route path="/" element={<Home onBrowse={handleBrowse} />} />
           <Route path="/catalog" element={<Prices />} />
           <Route path="/contact" element={<ContactCard />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/prices" element={<Prices />} />
           {/* Add more routes here if needed */}
         </Routes>
       </main>

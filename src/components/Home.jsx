@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Star, DollarSign, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function RetailerAccountModal({
   show,
@@ -72,6 +73,7 @@ const Home = ({ onBrowse }) => {
   const [retailerAgreeMailing, setRetailerAgreeMailing] = useState(false);
   const [retailerError, setRetailerError] = useState('');
   const [retailerSuccess, setRetailerSuccess] = useState('');
+  const navigate = useNavigate();
 
   const handleRetailerSubmit = (e) => {
     e.preventDefault();
@@ -173,7 +175,7 @@ const Home = ({ onBrowse }) => {
       <div className="w-full flex justify-center pt-8 pb-2">
         <button
           className="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow hover:bg-orange-600 transition-colors text-lg"
-          onClick={() => setShowRetailerModal(true)}
+          onClick={() => window.open('/registration', '_blank', 'noopener')}
         >
           Create Retailer Account
         </button>
