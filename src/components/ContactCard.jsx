@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 
 const BusinessCard = () => (
   <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white rounded-3xl shadow-xl p-10 w-full max-w-md mx-auto md:mx-0 flex flex-col items-center">
-    <img
-      src="/logo192.png"
-      alt="ShopHub Logo"
-      className="w-24 h-24 rounded-full border-4 border-white shadow mb-4 bg-white object-contain"
-    />
     <h3 className="text-2xl font-extrabold mb-2 tracking-tight">ShopHub</h3>
     <p className="text-blue-100 mb-2 text-lg font-semibold">Your Smart Price Tracker</p>
     <p className="text-sm mb-4 text-blue-200 text-center">

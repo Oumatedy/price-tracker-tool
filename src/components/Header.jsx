@@ -18,7 +18,9 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-sm py-4 px-6 flex items-center justify-between">
-      <span className="text-2xl font-bold text-blue-700">ShopHub</span>
+      <Link to="/" className="flex items-center gap-2">
+        <span className="text-2xl font-bold text-blue-700">ShopHub</span>
+      </Link>
       <nav className="flex gap-2">
         {navLink('/', 'Home')}
         {navLink('/catalog', 'Products')}
